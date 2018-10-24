@@ -1,9 +1,7 @@
 #! /bin/bash
 set -e
 
-FILENAME=chart.html
-
-cat > $FILENAME << EOF
+cat << EOF
 <html>
   <head>
     <!--Load the AJAX API-->
@@ -29,10 +27,10 @@ cat > $FILENAME << EOF
 EOF
 
 github-linguist | while read percentage language
-    do echo "          ['$language', ${percentage%?}]," >> $FILENAME
+    do echo "          ['$language', ${percentage%?}],"
 done
 
-cat >> $FILENAME << EOF
+cat << EOF
         ]);
 
         // Set chart options
